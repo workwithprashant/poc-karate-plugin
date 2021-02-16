@@ -8,7 +8,7 @@ Step 1: To build plugin
 
 Step 2: To execute Tests
 
-`mvn clean com.demo:poc-karate-plugin:2.0.0:functionaltest -DkarateVersion=0.9.6`
+`mvn clean com.demo:poc-karate-plugin:2.0.0:functionaltest -DkarateVersion=0.9.6 -Dtest=TestRunnerParallel`
 
 ### Karate 0.9.9.RC4
 
@@ -18,4 +18,4 @@ Step 1: To build plugin
 
 Step 2: To execute Tests
 
-`mvn clean com.demo:poc-karate-plugin:2.0.0:functionaltest -DkarateVersion=0.9.9.RC4`
+`mvn clean com.demo:poc-karate-plugin:2.0.0:functionaltest -DkarateVersion=0.9.9.RC4 -Dtest=TestRunnerParallel`
