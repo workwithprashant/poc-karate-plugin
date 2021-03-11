@@ -31,6 +31,7 @@
         <mojo.executor.version>2.3.1</mojo.executor.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <scala.maven.plugin.version>4.3.0</scala.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -105,6 +106,9 @@
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
+            <resource>
+                <directory>src/main/scala</directory>
+            </resource>
         </resources>
         <plugins>
             <plugin>
@@ -120,6 +124,27 @@
                         <arg>-Xlint:all</arg>
                     </compilerArgs>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${scala.maven.plugin.version}</version>
+                <configuration>
+                    <recompileMode>incremental</recompileMode>
+                    <args>
+                        <arg>-deprecation</arg>
+                        <arg>-feature</arg>
+                        <arg>-language:postfixOps</arg>
+                    </args>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

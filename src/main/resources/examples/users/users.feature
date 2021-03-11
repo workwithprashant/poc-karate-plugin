@@ -8,6 +8,7 @@ Feature: sample karate test script
   Scenario: create a user and then get it by id
     * def response = call read('library.feature@getusers')
     * print response[0]
+
     * def user =
       """
       {
@@ -30,3 +31,35 @@ Feature: sample karate test script
 
     * def id = response.id
     * print 'created id is: ', id
+
+
+  @demo
+  Scenario Outline: create a user and then get it by id
+    * def user =
+      """
+      {
+        "name": "Test User",
+        "username": "testuser",
+        "email": "test@user.com",
+        "address": {
+          "street": "Has No Name",
+          "suite": "Apt. 123",
+          "city": "Electri",
+          "zipcode": "54321-6789"
+        }
+      }
+      """
+    Given url 'https://jsonplaceholder.typicode.com/users'
+    And request user
+    When method post
+    Then status 201
+    Then print <name>
+
+    * def id = response.id
+    * print 'created id is: ', id
+    Examples:
+      | name          |
+      | 'iteration 1' |
+      | 'iteration 2' |
+      | 'iteration 3' |
+      | 'iteration 4' |

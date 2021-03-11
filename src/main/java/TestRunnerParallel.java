@@ -8,6 +8,6 @@ public class TestRunnerParallel {
     public void testParallel() {
         Runner.path("classpath:")
                 .tags(Collections.singletonList("demo"))
-                .parallel(1);
+                .parallel(5);
     }
 }

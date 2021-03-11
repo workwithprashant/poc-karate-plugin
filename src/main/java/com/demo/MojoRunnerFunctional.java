@@ -21,7 +21,12 @@ import static org.twdata.maven.mojoexecutor.MojoExecutor.*;
  * @author workwithprashant @gmail.com
  */
 //@Mojo(name = "functionaltest", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
-@Mojo(name = "functionaltest", requiresProject = false, defaultPhase = LifecyclePhase.PROCESS_SOURCES, requiresDependencyResolution = ResolutionScope.COMPILE, threadSafe = true)
+@Mojo(name = "functionaltest",
+        requiresProject = false,
+        defaultPhase = LifecyclePhase.PROCESS_SOURCES,
+        requiresDependencyResolution = ResolutionScope.COMPILE_PLUS_RUNTIME,
+        threadSafe = true
+)
 public class MojoRunnerFunctional
         extends AbstractMojo {
 
@@ -74,7 +79,7 @@ public class MojoRunnerFunctional
                     plugin(
                             groupId("org.apache.maven.plugins"),
                             artifactId("maven-surefire-plugin"),
-                            version("2.22.2")
+                            version("3.0.0-M5")
                     ),
                     goal("test"),
                     configuration(pluginConfig),

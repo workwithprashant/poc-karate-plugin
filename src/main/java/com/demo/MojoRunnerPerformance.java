@@ -21,7 +21,12 @@ import static org.twdata.maven.mojoexecutor.MojoExecutor.*;
  *
  * @author workwithprashant@gmail.com
  */
-@Mojo(name = "performancetest", defaultPhase = LifecyclePhase.PROCESS_SOURCES, requiresProject = false, requiresDependencyResolution = ResolutionScope.COMPILE, threadSafe = true, requiresOnline = true)
+@Mojo(name = "performancetest",
+        defaultPhase = LifecyclePhase.PROCESS_SOURCES,
+        requiresProject = false,
+        requiresDependencyResolution = ResolutionScope.COMPILE_PLUS_RUNTIME,
+        threadSafe = true,
+        requiresOnline = true)
 public class MojoRunnerPerformance
         extends AbstractMojo {
 
@@ -70,7 +75,7 @@ public class MojoRunnerPerformance
                     plugin(
                             groupId("io.gatling"),
                             artifactId("gatling-maven-plugin"),
-                            version("3.1.0")
+                            version("3.1.1")
                     ),
                     goal("test"),
                     configuration(pluginConfig),
@@ -92,7 +97,7 @@ public class MojoRunnerPerformance
         configuration.add(new Element("simulationsFolder", "${project.build.testOutputDirectory}"));
         configuration.add(new Element("disableCompiler", "true"));
         configuration.add(new Element("includes",
-                element("include", String.format("simulations.%s", "*"))
+                element("include", String.format("simulations.%s", "DemoLoadSimulation"))
         ));
 
         return configuration;
